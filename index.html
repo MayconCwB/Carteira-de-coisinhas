@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#6552df"><meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Minha Carteira">
+  <meta name="description" content="Sua carteirinha, ingressos e documentos salvos no próprio celular.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' blob: data:; frame-src blob:; object-src blob:; connect-src 'self'; base-uri 'self'; form-action 'none'">
+  <link rel="manifest" href="./manifest.webmanifest"><link rel="apple-touch-icon" href="./icon-192.png">
+  <link rel="stylesheet" href="./style.css"><script src="./app.js" defer></script><title>Minha Carteira</title>
+</head>
+<body>
+<main>
+  <header><a class="brand" href="./"><span class="logo" aria-hidden="true">▰</span> Minha Carteira</a><button id="settings" class="icon-button" aria-label="Abrir ajustes">⚙</button></header>
+  <section class="hero"><span class="eyebrow">SEMPRE COM VOCÊ</span><h1>Sua carteira.<br>Seu mundo, à mão.</h1><p>Carteirinhas, ingressos e documentos.<br>Um toque e está tudo aqui.</p><div class="local"><span aria-hidden="true">◈</span> Salvo só no seu aparelho</div><div class="hero-art" aria-hidden="true"><div class="art-back"></div><div class="art-front"><span>MINHA CARTEIRA</span><b>▦</b><i>•••• &nbsp; •••• &nbsp; 2026</i></div></div></section>
+  <aside id="install-tip">No iPhone, abra no Safari e toque em <strong>Compartilhar → Adicionar à Tela de Início</strong>. Adicione seus documentos depois de abrir pelo ícone.</aside>
+  <div class="section-title"><div><h2>Seus documentos</h2><p id="count">Carregando…</p></div><button id="add" class="primary">＋ Adicionar</button></div>
+  <label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Buscar na sua carteira" aria-label="Buscar documento"></label>
+  <nav id="filters" aria-label="Filtrar documentos"></nav>
+  <section id="cards" class="cards" aria-label="Documentos"></section>
+  <section id="empty" class="empty" hidden><span class="empty-icon" aria-hidden="true">▱</span><h3>Sua carteira começa aqui</h3><p>Guarde uma foto ou PDF e encontre<br>o que precisa em segundos.</p><button id="first-add" class="primary">＋ Meu primeiro documento</button></section>
+  <footer>Seu acesso rápido, sem conta e sem envio de arquivos.</footer>
+</main>
+<dialog id="editor"><form id="document-form"><div class="dialog-heading"><h2 id="editor-title">Novo documento</h2><button type="button" data-close="editor" class="icon-button" aria-label="Fechar">×</button></div><label>Nome<input id="title" maxlength="100" required placeholder="Ex.: Carteirinha da faculdade"></label><label>Categoria<select id="category"><option>Carteirinha</option><option>Ingressos</option><option>Documentos</option><option>Outros</option></select></label><label id="file-label" class="file-label">＋ Escolher foto ou PDF<input id="file" type="file" accept="image/*,application/pdf"></label><p id="file-name" class="muted">JPG, PNG, HEIC ou PDF · até 30 MB</p><p id="form-error" class="error" role="alert"></p><button id="save" class="primary full" type="submit">Salvar no aparelho</button></form></dialog>
+<dialog id="viewer" class="viewer"><div class="dialog-heading"><h2 id="view-title"></h2><button data-close="viewer" class="icon-button" aria-label="Fechar documento">×</button></div><div id="view-content"></div><div class="viewer-actions"><button id="share" class="primary">Compartilhar / salvar cópia</button><button id="edit" class="secondary">Editar</button><button id="delete" class="danger">Excluir</button></div><p class="muted">Amplie a imagem com dois dedos. Para PDFs, use os controles do visualizador.</p></dialog>
+<dialog id="preferences"><div class="dialog-heading"><h2>Sua carteira, seu controle</h2><button data-close="preferences" class="icon-button" aria-label="Fechar ajustes">×</button></div><p>Seus arquivos ficam neste aparelho. Limpar os dados do site ou perder o celular pode apagar a carteira. Mantenha seus originais.</p><button id="backup" class="primary full">Exportar cópia de segurança</button><label class="file-label">Restaurar cópia de segurança<input id="restore" type="file" accept="application/json,.json"></label><p class="muted">A cópia contém seus documentos. Salve em um local de sua escolha; o app não a envia automaticamente.</p><button id="persist" class="secondary full">Pedir proteção do armazenamento</button><p id="storage-status" class="muted"></p><p class="muted">Ingresso com QR Code que muda precisa do app do emissor. Aqui você guarda a imagem ou PDF original.</p></dialog>
+<dialog id="confirm-delete"><h2>Excluir documento?</h2><p>A cópia dentro da carteira será apagada.</p><div class="viewer-actions"><button data-close="confirm-delete" class="secondary">Cancelar</button><button id="confirm-delete-button" class="danger">Excluir</button></div></dialog>
+<div id="toast" role="status" hidden></div>
+</body></html>
